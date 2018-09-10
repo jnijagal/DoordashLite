@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "interview.com.doordashlite"
+        minSdkVersion 14
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+}
+
+sourceSets {
+    test {
+        resources {
+            srcDir "test"
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.squareup.retrofit2:retrofit:2.4.0'
+    compile "com.android.support:cardview-v7:26.1.0"
+    compile 'com.android.support:recyclerview-v7:26.1.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+    compile 'com.android.support:appcompat-v7:26.1.0'
+
+    testCompile 'junit:junit:4.12'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    androidTestCompile 'org.testng:testng:6.9.6'
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.1.0'
+}

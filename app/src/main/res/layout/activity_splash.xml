@@ -1,0 +1,13 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".fragments.SplashFragment">
+
+    <ImageView
+        android:layout_width="@dimen/splash_image_width"
+        android:layout_height="@dimen/splash_image_width"
+        android:src="@drawable/splash_logo"
+        android:contentDescription="@string/splash_image_content_description"/>
+</LinearLayout>
