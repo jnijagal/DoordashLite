@@ -2,10 +2,15 @@ package interview.com.doordashlite.activities;
 
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.Checkable;
 import android.widget.Toast;
 
 import java.util.Collections;
@@ -31,6 +36,7 @@ public class RestaurantListactivity extends Activity {
     private RestaurantListAdapter adapter;
     private RecyclerView recyclerView;
     private SplashFragment mSplashScreenFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +117,8 @@ public class RestaurantListactivity extends Activity {
      * @param restaurantList
      */
     private void populateRecyclerView(List<Restaurant> restaurantList) {
+        final CheckBox favCheckBox = findViewById(R.id.fav_checked);
+        Log.d("Test", "init checkbox" + favCheckBox);
         recyclerView = findViewById(R.id.restaurant_list_recycler_view);
         recyclerView.addItemDecoration(new RestaurantListItemDecoration(this));
         adapter = new RestaurantListAdapter(this, restaurantList);

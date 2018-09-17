@@ -34,16 +34,38 @@
             android:layout_marginTop="@dimen/item_margin_name_description"
             android:textColor="@android:color/darker_gray"
             android:textSize="@dimen/item_status_text_size" />
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/restaurant_status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginEnd="@dimen/item_margin_right"
-        android:layout_marginRight="@dimen/item_margin_right"
-        android:layout_marginBottom="@dimen/item_margin_bottom"
-        android:gravity="end"
-        android:textSize="@dimen/item_status_text_size" />
+    <LinearLayout
+        android:layout_width="@dimen/item_name_width"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/fav_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/fav_checked"
+                android:layout_marginLeft="2dp"
+                android:checked="false"
+                android:text="@string/favourite_text" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/restaurant_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/item_margin_right"
+            android:layout_marginRight="@dimen/item_margin_right"
+            android:layout_marginTop="25dp"
+            android:textSize="@dimen/item_status_text_size" />
+
+    </LinearLayout>
 </LinearLayout>

@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 
-class RestaurantTest {
+public class RestaurantTest {
     private static final String TEST_ID = "testID";
     private static final String TEST_NAME ="testName";
     private static final String TEST_DESCRIPTION = "testDesc";
@@ -17,49 +17,49 @@ class RestaurantTest {
 
 
     private Restaurant restaurant;
-    @org.junit.jupiter.api.BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         restaurant = new Restaurant(TEST_ID, TEST_NAME, TEST_DESCRIPTION, TEST_STATUS_TYPE, TEST_STATUS, TEST_COVER_IMG_URL, TEST_IS_ONLY_CATERING);
     }
 
-    @org.junit.jupiter.api.AfterEach
-    void tearDown() {
+    @After
+    public void tearDown() {
         restaurant = null;
 
     }
 
-    @org.junit.jupiter.api.Test
-    void getId() {
+    @Test
+    public void getId() {
         assertEquals(restaurant.getId(), TEST_ID);
     }
 
-    @org.junit.jupiter.api.Test
-    void getName() {
+    @Test
+    public void getName() {
         assertEquals(restaurant.getName(), TEST_NAME);
     }
 
-    @org.junit.jupiter.api.Test
-    void getDescription() {
+    @Test
+    public void getDescription() {
         assertEquals(restaurant.getDescription(), TEST_DESCRIPTION);
     }
 
-    @org.junit.jupiter.api.Test
-    void getStatusType() {
+    @Test
+    public void getStatusType() {
         assertEquals(restaurant.getStatusType(), TEST_STATUS_TYPE);
     }
 
-    @org.junit.jupiter.api.Test
-    void getStatus() {
+    @Test
+    public void getStatus() {
         assertEquals(restaurant.getStatus(), TEST_STATUS);
     }
 
-    @org.junit.jupiter.api.Test
-    void getCoverImageUrl() {
+    @Test
+    public void getCoverImageUrl() {
         assertEquals(restaurant.getCoverImageUrl(), TEST_COVER_IMG_URL);
     }
 
-    @org.junit.jupiter.api.Test
-    void isOnlyCatering() {
+    @Test
+    public void isOnlyCatering() {
         assertEquals(restaurant.isOnlyCatering(), TEST_IS_ONLY_CATERING);
     }
 }

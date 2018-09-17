@@ -8,10 +8,14 @@
     <dimen name="item_margin_top">0dp</dimen>
     <dimen name="item_margin_right">22dp</dimen>
     <dimen name="item_margin_bottom">13dp</dimen>
+    <dimen name="item_fav_text_margin_bottom">18dp</dimen>
     <dimen name="item_margin_name_description">1dp</dimen>
     <dimen name="item_status_text_size">13sp</dimen>
     <dimen name="item_name_text_size">14sp</dimen>
     <dimen name="item_image_width">129dp</dimen>
     <dimen name="item_image_height">121dp</dimen>
     <dimen name="item_height">120dp</dimen>
+    <!--<dimen name="fav_margin_top"></dimen>-->
+    <!--<dimen name=""></dimen>-->
+    <!--<dimen name=""></dimen>-->
 </resources>

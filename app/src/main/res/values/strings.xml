@@ -6,4 +6,5 @@
     <string name="splash_image_content_description">welcome, loading door dash lite</string>
     <string name="title_discover">Discover</string>
     <string name="status_pre_order">Pre-order</string>
+    <string name="favourite_text">Fav</string>
 </resources>

@@ -1,13 +1,16 @@
 package interview.com.doordashlite;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,23 +27,38 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
     private Context mContext;
     private OkHttp3Downloader okHttp3Downloader;
     private Picasso mPicasso;
+    private SharedPreferences mSharedPreferences;
 
     public RestaurantListAdapter(Context context, List<Restaurant> restaurantList) {
         this.mContext = context;
         this.mRestaurantList = restaurantList;
+        mSharedPreferences = mContext.getSharedPreferences(
+                DoorDashLiteConstants.DOORDASH_APP, Context.MODE_PRIVATE);
+
     }
 
     @Override
     public RestaurantListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.restaurant_list_item, parent, false);
+
         return new RestaurantListViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(RestaurantListViewHolder holder, int position) {
+    public void onBindViewHolder(final RestaurantListViewHolder holder, int position) {
         SpannableString name = new SpannableString(mRestaurantList.get(position).getName());
         name.setSpan(new StyleSpan(Typeface.BOLD), 0, name.length(), 0);
+        final CheckBox favStatus = holder.favStatus;
+        if (favStatus != null) {
+            favStatus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    setFavStatus(favStatus.isChecked(), DoorDashLiteConstants.FAV_STATUS_KEY + holder.getAdapterPosition());
+                }
+            });
+            favStatus.setChecked(getFavStatus(DoorDashLiteConstants.FAV_STATUS_KEY + holder.getAdapterPosition()));
+        }
         holder.restaurantName.setText(name);
         holder.restaurantDescription.setText(mRestaurantList.get(position).getDescription());
         String status = mRestaurantList.get(position).getStatus();
@@ -87,6 +105,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
 
         private ImageView coverImage;
         private TextView restaurantName;
+        private CheckBox favStatus;
         private TextView restaurantDescription;
         private TextView restaurantStatus;
 
@@ -96,9 +115,19 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
 
             coverImage = mView.findViewById(R.id.restaurant_cover_image);
             restaurantName = mView.findViewById(R.id.restaurant_name);
+            favStatus = mView.findViewById(R.id.fav_checked);
             restaurantDescription = mView.findViewById(R.id.restaurant_description);
             restaurantStatus = mView.findViewById(R.id.restaurant_status);
         }
     }
 
+    private void setFavStatus(final boolean isFav, final String key) {
+        if (mSharedPreferences != null) {
+            mSharedPreferences.edit().putBoolean(key, isFav).apply();
+        }
+    }
+
+    private boolean getFavStatus(final String key) {
+        return mSharedPreferences != null && mSharedPreferences.getBoolean(key, false);
+    }
 }
